@@ -11,10 +11,12 @@ module.exports = {
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
     'prettier',
+    'plugin:storybook/recommended',
+    'plugin:storybook/recommended',
   ],
   rules: {
     'no-unused-vars': 'off',
-    'no-console': 'warn',
+    'no-console': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/no-unescaped-entities': 'off',
 
