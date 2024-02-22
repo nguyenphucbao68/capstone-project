@@ -1,10 +1,10 @@
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import Link, { type LinkProps } from 'next/link';
 import {
-  type MouseEvent,
-  type ReactNode,
   createElement,
   forwardRef,
+  type MouseEvent,
+  type ReactNode,
 } from 'react';
 
 import { cn } from '@/lib/classNames';

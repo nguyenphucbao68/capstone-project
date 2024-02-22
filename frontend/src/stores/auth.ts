@@ -1,5 +1,6 @@
-import { createSelectors } from './createSelectors';
 import { create } from 'zustand';
+
+import { createSelectors } from './createSelectors';
 
 export type AuthStatus = 'loading' | 'unauthorized' | 'authorized';
 

@@ -6,9 +6,9 @@ import localeData from 'dayjs/plugin/localeData';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import weekday from 'dayjs/plugin/weekday';
 
-import 'dayjs/locale/vi';
 import 'dayjs/locale/en';
 import 'dayjs/locale/en-gb';
+import 'dayjs/locale/vi';
 
 dayjs.extend(isoWeek);
 dayjs.extend(weekday);

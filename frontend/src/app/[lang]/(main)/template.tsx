@@ -1,12 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import { useParams, usePathname, useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/navigation';
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation';
 
-import { cn } from '@/lib/classNames';
 import useLocaleConfig from '@/hooks/useLocaleConfig';
-
+import { cn } from '@/lib/classNames';
 import { LocaleProvider, useLocale } from '@/locale';
 
 export default function Template({ children }: { children: React.ReactNode }) {

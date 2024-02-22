@@ -1,6 +1,6 @@
-import type { PropsWithChildren } from 'react';
 import type {
   CSSProperties,
+  PropsWithChildren,
   RefAttributes,
   SVGAttributes,
   SVGProps,
@@ -37,15 +37,15 @@ const Icon = ({
 }: Props) => {
   return (
     <svg
-      {...props}
       aria-hidden='true'
       focusable='false'
       role='img'
       xmlns='http://www.w3.org/2000/svg'
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 0 ${width || size} ${height || size}`}
       className={className}
-      width={width}
-      height={height}
+      width={width || size}
+      height={height || size}
+      {...props}
     >
       {children ?? <path fill='currentColor' d={path} {...pathProps} />}
     </svg>

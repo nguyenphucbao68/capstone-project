@@ -1,10 +1,11 @@
-import { isHasValue } from '@/lib/validate';
-import { getAccessToken } from '@/stores/auth';
 import axios, {
   type AxiosError,
   type AxiosRequestConfig,
   type AxiosResponse,
 } from 'axios';
+
+import { isHasValue } from '@/lib/validate';
+import { getAccessToken } from '@/stores/auth';
 
 // type AxiosRetry = AxiosError['config'] & { _retry: boolean };
 

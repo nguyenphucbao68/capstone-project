@@ -1,10 +1,12 @@
+import { MantineProvider } from '@mantine/core';
 import { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
 import * as React from 'react';
 
-import '@/styles/globals.css';
-
 import { siteConfig } from '@/constant/config';
+
+import '@mantine/core/styles.css';
+import '@/styles/globals.css';
 
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
@@ -67,7 +69,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang} className={font.className}>
-      <body>{children}</body>
+      <body>
+        <MantineProvider>{children}</MantineProvider>
+      </body>
     </html>
   );
 }

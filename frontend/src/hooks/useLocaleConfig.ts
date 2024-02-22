@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { localStorageKeys, localStorageStore } from '@/lib/storage';
-
 import { DEFAULT_LOCALE, LANGUAGES_CODE } from '@/constant/config';
+import { localStorageKeys, localStorageStore } from '@/lib/storage';
 
 const DEFAULT_LOCALE_CONFIG = {
   locales: {

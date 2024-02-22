@@ -5,6 +5,7 @@ const Icon = (props: IconProps) => (
     width={props.width || props.size || 24}
     height={props.height || props.size || 24}
     fill='none'
+    stroke='currentColor'
     {...props}
   >
     <path
