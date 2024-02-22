@@ -1,7 +1,7 @@
 import { MantineProvider } from '@mantine/core';
 import { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
-import * as React from 'react';
+import { type ReactNode } from 'react';
 
 import { siteConfig } from '@/constant/config';
 
@@ -64,7 +64,7 @@ export default function RootLayout({
   children,
   params,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: { lang: string };
 }) {
   return (

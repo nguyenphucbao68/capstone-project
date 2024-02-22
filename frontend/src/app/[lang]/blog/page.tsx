@@ -158,7 +158,7 @@ export default function BlogPage() {
                 người.
               </h3>
               <button className='rounded bg-red-500 px-7 py-3 text-center text-2xl font-semibold text-white hover:bg-red-600'>
-                <Link href={'#!'}>Chia sẻ nhé!</Link>
+                <Link href='#!'>Chia sẻ nhé!</Link>
               </button>
             </div>
           </div>

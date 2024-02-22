@@ -1,4 +1,4 @@
-import { isHasValue, isString } from '@/lib/validate';
+import { isString } from '@/lib/validate';
 
 export const localStorageKeys = {
   selectedLanguageCode: 'selectedLanguageCode',

@@ -1,5 +1,3 @@
-import { type ReactNode } from 'react';
-
 export type LocaleData = Record<string, string>;
 
 type LocaleConfig = Record<string, string | number>;
@@ -9,7 +7,7 @@ export type LocaleContext = {
   defaultLocale?: string;
   localeStorageKey?: string;
   detectBrowserLanguage?: boolean;
-  children: ReactNode;
+  children: JSX.Element;
   localeConfig?: Record<string, LocaleConfig>;
   config?: LocaleConfig;
   ssr?: boolean;

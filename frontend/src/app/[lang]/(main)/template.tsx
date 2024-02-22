@@ -33,32 +33,34 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   return (
     <LocaleProvider {...locale}>
-      <div className='bg-header-gradient flex h-[88px] w-full items-center px-[30px]'>
-        <Image alt='logo' src='/images/logo.png' width={104} height={40} />
-        <div className='item-center ml-auto flex gap-6 text-base text-white'>
-          <div>{`${t('signinText')}/${t('signupText')}`}</div>
-          <div className='text-dark-grey flex items-center'>
-            <span
-              onClick={() => onChangeLang('en')}
-              className={cn('cursor-pointer', {
-                'text-white': _locale === 'en',
-              })}
-            >
-              {t('enText')}
-            </span>
-            <span className='mx-2 h-4 w-[1px] bg-white'></span>
-            <span
-              onClick={() => onChangeLang('vi')}
-              className={cn('cursor-pointer', {
-                'text-white': _locale === 'vi',
-              })}
-            >
-              {t('viText')}
-            </span>
+      <>
+        <div className='bg-header-gradient flex h-[88px] w-full items-center px-[30px]'>
+          <Image alt='logo' src='/images/logo.png' width={104} height={40} />
+          <div className='item-center ml-auto flex gap-6 text-base text-white'>
+            <div>{`${t('signinText')}/${t('signupText')}`}</div>
+            <div className='text-dark-grey flex items-center'>
+              <span
+                onClick={() => onChangeLang('en')}
+                className={cn('cursor-pointer', {
+                  'text-white': _locale === 'en',
+                })}
+              >
+                {t('enText')}
+              </span>
+              <span className='mx-2 h-4 w-[1px] bg-white'></span>
+              <span
+                onClick={() => onChangeLang('vi')}
+                className={cn('cursor-pointer', {
+                  'text-white': _locale === 'vi',
+                })}
+              >
+                {t('viText')}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      {children}
+        {children}
+      </>
     </LocaleProvider>
   );
 }
