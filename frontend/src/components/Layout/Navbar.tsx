@@ -11,7 +11,6 @@ import {
 
 import { IconChevronDown } from '@/components/Icons';
 import { routes } from '@/configs/router';
-import useLocaleConfig from '@/hooks/useLocaleConfig';
 import { cn } from '@/lib/classNames';
 import { useLocale } from '@/locale';
 
