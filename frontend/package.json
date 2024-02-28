@@ -94,7 +94,7 @@
       "git add ."
     ],
     "**/*.{json,css,scss,md,webmanifest}": [
-      "prettier -w"
+      "prettier -w",
       "git add ."
     ]
   }
