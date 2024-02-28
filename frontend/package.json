@@ -87,11 +87,15 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --max-warnings=0",
       "prettier -w"
+      "yarn run lint",
+      "yarn run format",
+      "yarn run build",
+      "git add ."
     ],
     "**/*.{json,css,scss,md,webmanifest}": [
       "prettier -w"
+      "git add ."
     ]
   }
 }
