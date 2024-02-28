@@ -3,12 +3,13 @@ const ShopSchema = gql`
   # ---------------------------------------------------------
   # Model Objects
   # ---------------------------------------------------------
+  scalar Bytea
   type UserPayload {
     id: ID!
     name: String!
     email: String!
-    password: String!
-    bod: Date
+    password: Bytea 
+    dob: Date
   }
 
   # ---------------------------------------------------------
@@ -26,16 +27,26 @@ const ShopSchema = gql`
   input UserInput {
     name: String!
     email: String!
-    bod: Date
+    phone: String!
+    gender: Int
+    dob: String!
+    current_address: String!
+    about_me: String!
+    role: Int
+    img_url: String
+    personal_link: String
+  }
+  input UserCreate {
+    name: String!
+    email: String!
     password: String!
   }
 
   # ---------------------------------------------------------
   # Mutations
   # ---------------------------------------------------------
-
   extend type Mutation {
-    createUser(input: UserInput!): UserPayload
+    createUser(input: UserCreate!): UserPayload
     updateUser(id: ID!, input: UserInput!): UserPayload
     deleteUser(id: ID!): UserPayload
   }
