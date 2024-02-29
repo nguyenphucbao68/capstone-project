@@ -1,5 +1,6 @@
 import { gql } from "apollo-server-express";
-const ShopSchema = gql`
+
+const UserSchema = gql`
   # ---------------------------------------------------------
   # Model Objects
   # ---------------------------------------------------------
@@ -18,6 +19,7 @@ const ShopSchema = gql`
   extend type Query {
     user(id: ID!): UserPayload
     users: [UserPayload]
+    currentUser: UserPayload
     helloWord: String
   }
 
@@ -41,6 +43,10 @@ const ShopSchema = gql`
     email: String!
     password: String!
   }
+  input SigninInput {
+    email: String!
+    password: String!
+  }
 
   # ---------------------------------------------------------
   # Mutations
@@ -49,7 +55,9 @@ const ShopSchema = gql`
     createUser(input: UserCreate!): UserPayload
     updateUser(id: ID!, input: UserInput!): UserPayload
     deleteUser(id: ID!): UserPayload
+    signUp(input: UserCreate!): String
+    signIn(input: SigninInput!): String
   }
 `;
 
-export default ShopSchema;
+export default UserSchema;
