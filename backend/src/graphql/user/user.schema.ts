@@ -57,6 +57,7 @@ const UserSchema = gql`
     deleteUser(id: ID!): UserPayload
     signUp(input: UserCreate!): String
     signIn(input: SigninInput!): String
+    resetPassword(email: String!): String
   }
 `;
 

@@ -4,6 +4,7 @@ import axios from "axios";
 
 const yourOktaDomain = 'trial-7162432.okta.com';
 const apiToken = 'SSWS 00Lro-6tQleA85IJK7ebwNFkJBJXnAVA3FLCqVzwpd';
+// const apiToken = 'SSWS 00fbaYJG2PFnl4vyCD6jf4R3HMK9WFsMdeL6IZenrK';
 
 let currentUserOktaID: string | string = "";
 
@@ -150,7 +151,6 @@ const Mutation = {
       return "Signup failed";
     });
   },
-
   signIn: async (_: any,
     { input }: { input: user },
     { prisma }: ContextInterface,
@@ -177,6 +177,30 @@ const Mutation = {
       // console.log(error)
       return "Authentication failed";
     });
-  }
+  },
+  resetPassword: async (_: any,
+    { email }: { email: string },
+    { prisma }: ContextInterface,
+  ): Promise<String> => {
+    try {
+      const response = await axios.get(`https://${yourOktaDomain}/api/v1/users/${email}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': apiToken
+        }
+      });
+      const userId = response.data.id;
+      await axios.post(`https://${yourOktaDomain}/api/v1/users/${userId}/lifecycle/reset_password?sendEmail=true`, {}, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': apiToken
+        }
+      });
+      return "ok";
+    } catch (error) {
+      // console.error(error);
+      return "Reset password failed";
+    }
+  },
 };
 export default { Query, Mutation };
