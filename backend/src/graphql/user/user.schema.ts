@@ -12,6 +12,10 @@ const UserSchema = gql`
     password: Bytea 
     dob: Date
   }
+  type AuthPayload {
+    authToken: String!
+    user: UserPayload
+  }
 
   # ---------------------------------------------------------
   # Queries
@@ -56,7 +60,7 @@ const UserSchema = gql`
     updateUser(id: ID!, input: UserInput!): UserPayload
     deleteUser(id: ID!): UserPayload
     signUp(input: UserCreate!): String
-    signIn(input: SigninInput!): String
+    signIn(input: SigninInput!): AuthPayload
     resetPassword(email: String!): String
   }
 `;

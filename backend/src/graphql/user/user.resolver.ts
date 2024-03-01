@@ -1,12 +1,12 @@
 import { user } from "@prisma/client";
 import { ContextInterface } from "../context";
 import axios from "axios";
+import { error } from "console";
 
 const yourOktaDomain = 'trial-7162432.okta.com';
 const apiToken = 'SSWS 00Lro-6tQleA85IJK7ebwNFkJBJXnAVA3FLCqVzwpd';
 // const apiToken = 'SSWS 00fbaYJG2PFnl4vyCD6jf4R3HMK9WFsMdeL6IZenrK';
 
-let currentUserOktaID: string | string = "";
 
 const Query = {
   user: async (
@@ -50,22 +50,38 @@ const Query = {
 };
 
 const Mutation = {
+  //user CRUD
   createUser: async (
     _: any,
     { input }: { input: user },
     { prisma }: ContextInterface,
   ): Promise<user> => {
-
     const userData = {
       ...input,
       role: input.role || 0,
       password: input.password ? Buffer.from(input.password) : undefined,
       // password: input.password ? encoder.encode(input.password.toString()) : undefined,
     };
-
     const user = await prisma.user.create({
       data: userData,
     });
+    const signupData = {
+      profile: {
+        firstName: input.name,
+        lastName: ".",
+        email: input.email,
+        login: input.email
+      },
+      credentials: {
+        password: { value: input.password }
+      }
+    }
+    await axios.post(`https://${yourOktaDomain}/api/v1/users?activate=true`, signupData, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': apiToken
+      }
+    })
     return user;
   },
   updateUser: async (
@@ -94,22 +110,36 @@ const Mutation = {
     { id }: { id: string },
     { prisma }: ContextInterface,
   ): Promise<user> => {
-    const _id = Number(id);
-    const user = await prisma.user.delete({
-      where: {
-        id: _id,
-      },
-    });
-    await axios.delete(`https://${yourOktaDomain}/api/v1/users/${currentUserOktaID}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': apiToken
-      }
-    });
-    return user;
+    try {
+      const _id = Number(id);
+      const user = await prisma.user.delete({
+        where: {
+          id: _id,
+        },
+      });
+
+      const response = await axios.get(`https://${yourOktaDomain}/api/v1/users/${user.email}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': apiToken
+        }
+      });
+      const userId = response.data.id;
+      await axios.delete(`https://${yourOktaDomain}/api/v1/users/${userId}?sendEmail=true`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': apiToken
+        }
+      });
+      return user;
+    } catch (error) {
+      // console.error(error);
+      throw new Error("Delete fail");
+    }
   },
 
 
+  //auth
   signUp: async (_: any,
     { input }: { input: user },
     { prisma }: ContextInterface,
@@ -121,7 +151,6 @@ const Mutation = {
       password: input.password ? Buffer.from(input.password) : undefined,
       // password: input.password ? encoder.encode(input.password.toString()) : undefined,
     };
-
     const user = await prisma.user.create({
       data: userData,
     });
@@ -147,14 +176,16 @@ const Mutation = {
       // console.log(response.data);
       return "ok";
     }).catch(error => {
-      // console.log(error)
+      console.log(error)
       return "Signup failed";
     });
+
+
   },
   signIn: async (_: any,
     { input }: { input: user },
     { prisma }: ContextInterface,
-  ): Promise<String> => {
+  ): Promise<{ authToken: String, user: user }> => {
     const signinData = {
       username: input.email,
       password: input.password,
@@ -163,20 +194,32 @@ const Mutation = {
         warnBeforePasswordExpired: false,
       }
     }
-    return await axios.post(`https://${yourOktaDomain}/api/v1/authn`, signinData, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': apiToken
+    try {
+      const response = await axios.post(`https://${yourOktaDomain}/api/v1/authn`, signinData, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': apiToken
+        }
+      })
+      // if (error)
+      //   throw new Error("Authentication failed");
+      console.log(error)
+      // if (response.data)
+      console.log(response.data.sessionToken)
+      const user = await prisma.user.findFirst({
+        where: {
+          email: input.email,
+        },
+      });
+      if (response && user)
+        return { authToken: response.data.sessionToken, user: user };
+      else {
+        throw new Error("User not found");
       }
-    }).then(response => {
-      currentUserOktaID = response.data.id;
-      // console.log("Request data:");
-      // console.log(response.data);
-      return response.data.sessionToken;
-    }).catch(error => {
-      // console.log(error)
-      return "Authentication failed";
-    });
+    } catch (error) {
+      console.error(error);
+      throw new Error("Authentication failed");
+    }
   },
   resetPassword: async (_: any,
     { email }: { email: string },
@@ -190,7 +233,7 @@ const Mutation = {
         }
       });
       const userId = response.data.id;
-      await axios.post(`https://${yourOktaDomain}/api/v1/users/${userId}/lifecycle/reset_password?sendEmail=true`, {}, {
+      await axios.post(`https://${yourOktaDomain}/api/v1/users/${userId}/lifecycle/reset_password?sendEmail=false`, {}, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': apiToken
