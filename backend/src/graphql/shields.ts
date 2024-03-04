@@ -11,9 +11,12 @@ const permissions = [
       users: isPublic,
     },
     Mutation: {
-      createUser: isPublic,
-      updateUser: isPublic,
-      deleteUser: isPublic,
+      createUser: isAdminOnly,
+      updateUser: isAdminAndUser,
+      deleteUser: isAdminAndUser,
+      signUp: isPublic,
+      signIn: isPublic,
+      resetPassword: isPublic
     },
   },
 ];
