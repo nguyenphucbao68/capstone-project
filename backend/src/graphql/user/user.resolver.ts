@@ -8,6 +8,9 @@ const apiToken = 'SSWS 00Lro-6tQleA85IJK7ebwNFkJBJXnAVA3FLCqVzwpd';
 // const apiToken = 'SSWS 00fbaYJG2PFnl4vyCD6jf4R3HMK9WFsMdeL6IZenrK';
 
 
+import { user } from "@prisma/client";
+import { ContextInterface } from "../context";
+
 const Query = {
   user: async (
     _: any,

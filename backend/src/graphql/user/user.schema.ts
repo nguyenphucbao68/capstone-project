@@ -50,6 +50,7 @@ const UserSchema = gql`
   input SigninInput {
     email: String!
     password: String!
+
   }
 
   # ---------------------------------------------------------
