@@ -8,10 +8,11 @@ import {
   useRouter,
   useSearchParams,
 } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 import { IconChevronDown } from '@/components/Icons';
 import { routes } from '@/configs/router';
-import useLocaleConfig from '@/hooks/useLocaleConfig';
+import { STICKY_NAV_OFFSET } from '@/constant/config';
 import { cn } from '@/lib/classNames';
 import { useLocale } from '@/locale';
 
@@ -22,9 +23,26 @@ const Header = () => {
   const pathname = usePathname();
   const params = useParams();
   const searchParams = useSearchParams();
+  const [stickyClass, setStickyClass] = useState('fixed');
 
-  const { locale } = useLocaleConfig(params?.lang as string);
-  const { t, locale: _locale } = useLocale();
+  useEffect(() => {
+    window.addEventListener('scroll', stickNavbar);
+
+    return () => {
+      window.removeEventListener('scroll', stickNavbar);
+    };
+  }, []);
+
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      const windowHeight = window.scrollY;
+      windowHeight > STICKY_NAV_OFFSET
+        ? setStickyClass('fixed shrink')
+        : setStickyClass('fixed');
+    }
+  };
+
+  const { locale: _locale } = useLocale();
 
   const onChangeLang = (lang: string) => {
     if (!pathname) return;
@@ -38,13 +56,15 @@ const Header = () => {
 
   return (
     <header className='header'>
-      <nav className='navbar navbar-expand-lg fixed left-0 right-0 z-10'>
+      <nav
+        className={`navbar navbar-expand-lg ${stickyClass} left-0 right-0 z-10`}
+      >
         <div className='bg-header-gradient icontainer-header flex w-full items-center'>
           <AppLink href={routes.home.path}>
             <Image
               alt='logo'
               src='/images/logo.png'
-              className='me-8'
+              className='logo-itviec me-8'
               width={108}
               height={40}
             />
