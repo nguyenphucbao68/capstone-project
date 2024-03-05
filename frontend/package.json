@@ -17,7 +17,8 @@
     "format:check": "prettier -c .",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "postinstall": "cd .. && husky install"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
@@ -88,7 +89,9 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "eslint --max-warnings=0",
-      "prettier -w"
+      "yarn run format",
+      "prettier -w",
+      "git add ."
     ],
     "**/*.{json,css,scss,md,webmanifest}": [
       "prettier -w"
