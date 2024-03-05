@@ -9,7 +9,7 @@ export default function ListCard() {
         <Card
           title='Công ty IT tốt nhất Việt Nam'
           description='Những công ty IT tốt nhất Việt Nam có điều gì đặc biệt? Họ đã phát triển như thế nào sau mỗi năm? Cùng khám phá thêm về những công ty tuyệt vời này nhé!'
-          url='#!'
+          url='/blog/best-company'
         />
         <Card
           title='Sự nghiệp IT'

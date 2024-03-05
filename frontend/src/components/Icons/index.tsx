@@ -35,4 +35,7 @@ export {
   Gift as IconGift,
   User as IconUser,
   Edit as IconEdit,
+  Trash2 as IconTrash2,
+  PenTool as IconPenTool,
+  X as IconX,
 } from 'react-feather';

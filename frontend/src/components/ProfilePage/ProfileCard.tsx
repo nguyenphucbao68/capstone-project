@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   IconEdit,
@@ -10,6 +10,8 @@ import {
   IconPhone,
   IconUser,
 } from '@/components/Icons';
+
+import ModalProfile from './Modal/ModalProfile';
 
 interface ProfileCardProps {
   username: string;
@@ -32,6 +34,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   avatarSrc,
   link,
 }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+    document.body.classList.add('overflow-y-hidden');
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    document.body.classList.remove('overflow-y-hidden');
+  };
+
   return (
     <div className='rounded-md bg-[#ffff] shadow-md'>
       <div className='flex flex-row flex-wrap justify-center px-4 pb-6 pt-6'>
@@ -54,7 +68,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
             {/* icon edit */}
             <div className='cursor-pointer'>
-              <IconEdit className='text-red h-5 w-5' />
+              <IconEdit className='text-red h-5 w-5' onClick={openModal} />
             </div>
           </div>
           <div className='mt-4 font-bold'>frontend</div>
@@ -97,6 +111,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           </div>
         </div>
       </div>
+      {/* Modal */}
+      {showModal && (
+        <ModalProfile avatarSrc='/path/to/avatar.jpg' closeModal={closeModal} />
+      )}
     </div>
   );
 };
