@@ -9,7 +9,7 @@ const Query = {
     { prisma }: ContextInterface,
   ): Promise<blog | null> => {
     const blog = await prisma.blog.findUnique({
-      where: { id },
+      where: { id: id.toString() },
     });
 
     return blog;

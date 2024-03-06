@@ -1,10 +1,12 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgcrypto]
 }
 
 model blog {
@@ -189,6 +191,8 @@ model user {
   password         Bytes?
   img_url          String?            @db.VarChar
   id               String             @id(map: "user_pk") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  is_deleted       Boolean?           @default(false)
+  okta_id          String?            @db.VarChar
   blog             blog[]
   follow           follow[]
   job_apply        job_apply[]
