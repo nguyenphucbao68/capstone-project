@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 import {
   OktaAuth,
   OktaAuthOptions,
-  TokenManagerInterface,
-  AccessToken,
-  IDToken,
-  UserClaims,
-  TokenParams
+  // TokenManagerInterface,
+  // AccessToken,
+  // IDToken,
+  // UserClaims,
+  // TokenParams
 } from '@okta/okta-auth-js';
 import okta from "@okta/okta-sdk-nodejs";
 dotenv.config();
@@ -22,7 +22,7 @@ const config: OktaAuthOptions = {
 };
 
 const authClient: OktaAuth = new OktaAuth(config);
-const tokenManager: TokenManagerInterface = authClient.tokenManager;
+// const tokenManager: TokenManagerInterface = authClient.tokenManager;
 // const accessToken: AccessToken = await tokenManager.get('accessToken') as AccessToken;
 // const idToken: IDToken = await tokenManager.get('idToken') as IDToken;
 // const userInfo: UserClaims = await authClient.token.getUserInfo(accessToken, idToken);
