@@ -21,6 +21,8 @@ const ShopSchema = gql`
     personal_link: String
     role: Int
     img_url: String
+    okta_id: String
+    is_deleted: Boolean
   }
 
   # ---------------------------------------------------------

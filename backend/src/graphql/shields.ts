@@ -14,7 +14,7 @@ const permissions = [
       createUser: isAdminOnly,
       updateUser: isAdminAndUser,
       deleteUser: isPublic,
-      hardDelUser: isAdminOnly,
+      hardDelUser: isPublic,
       signUp: isPublic,
       signIn: isPublic,
       resetPassword: isPublic
