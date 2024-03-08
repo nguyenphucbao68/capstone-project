@@ -7,20 +7,29 @@ import { ApolloServer } from "apollo-server-express";
 import depthLimit from "graphql-depth-limit";
 import { applyMiddleware } from "graphql-middleware";
 import { rateLimitDirective } from "graphql-rate-limit-directive";
-import jwt from "jsonwebtoken";
 import prisma from "./prisma";
 import { executor } from "./executor";
 import Logger from "./logger";
 require("dotenv").config();
 const { makeExecutableSchema } = require("@graphql-tools/schema");
+import { client, authClient } from "../utils/okta-config"
 
 const { rateLimitDirectiveTypeDefs, rateLimitDirectiveTransformer } =
   rateLimitDirective();
 
-const checkAuthorization = async (token: string) => {
+async function checkAuthorization(token: string) {
   try {
-    const authUser = await jwt.verify(token, process.env.KEY_CONSOLE || "");
-    return authUser;
+    console.log(token)
+    if (token == "") {
+      return false;
+    }
+    const parts = token.split('.');
+    const sessionToken = parts[0];
+    const userid = parts[1];
+    const user = await client.userApi.getUser({ userId: userid });
+    if (user.profile?.ostk === sessionToken) {
+      return await prisma.user.findFirst({ where: { okta_id: userid } });
+    }
   } catch (error) {
     return false;
   }
@@ -65,10 +74,10 @@ export const createApolloServer = (
         const user: any = await checkAuthorization(
           req.headers.authorization || "",
         );
+        // console.log(user);
 
-        if (user.usn) {
+        if (user) {
           authUser = user;
-          authUser.role = "admin";
         }
       }
       return Object.assign({ isRoot, authUser, prisma });

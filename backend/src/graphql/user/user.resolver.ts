@@ -1,6 +1,6 @@
 import { user } from "@prisma/client";
 import { ContextInterface } from "../context";
-import { client, authClient } from "../../utils/okta-config"
+import { client, authClient, accessToken } from "../../utils/okta-config"
 
 const Query = {
   user: async (
@@ -30,6 +30,13 @@ const Query = {
   ): Promise<user[]> => {
     return await prisma.user.findMany();
   },
+  getme: async (
+    _: any,
+    __: any,
+    { authUser }: ContextInterface,
+  ): Promise<user | null> => {
+    return authUser;
+  },
 
 
   helloWord: async (): Promise<string> => {
@@ -44,25 +51,29 @@ const Mutation = {
     { input }: { input: user },
     { prisma }: ContextInterface,
   ): Promise<user | null> => {
+    const user = await prisma.user.create({
+      data: {
+        ...input,
+        role: input.role || 0,
+        password: Buffer.from(input.password ?? ""),
+      },
+    });
     const body = {
       profile: {
         firstName: input.name ? input.name.toString() : undefined,
         lastName: ".",
         email: input.email ? input.email.toString() : undefined,
-        login: input.email ? input.email.toString() : undefined
+        login: input.email ? input.email.toString() : undefined,
+        dbid: user.id,
       },
       credentials: {
         password: { value: input.password?.toString() ?? "" }
       }
     }
     const result = await client.userApi.createUser({ body });
-    const user = await prisma.user.create({
-      data: {
-        ...input,
-        role: input.role || 0,
-        password: Buffer.from(input.password ?? ""),
-        okta_id: result.id,
-      },
+    await prisma.user.update({
+      where: { id: user.id, },
+      data: { okta_id: result.id },
     });
     return user;
   },
@@ -79,9 +90,7 @@ const Mutation = {
       dob: input.dob ? new Date(input.dob.toString().split("/").reverse().join("/")) : null,
     }
     const user = await prisma.user.update({
-      where: {
-        id,
-      },
+      where: { id, },
       data: _data,
     });
     return user;
@@ -92,12 +101,8 @@ const Mutation = {
     { prisma }: ContextInterface,
   ): Promise<user> => {
     const user = await prisma.user.update({
-      where: {
-        id,
-      },
-      data: {
-        is_deleted: { set: true }
-      },
+      where: { id, },
+      data: { is_deleted: { set: true } },
     });
     return user;
   },
@@ -106,11 +111,7 @@ const Mutation = {
     { id }: { id: string },
     { prisma }: ContextInterface,
   ): Promise<user> => {
-    const user = await prisma.user.delete({
-      where: {
-        id,
-      },
-    });
+    const user = await prisma.user.delete({ where: { id, }, });
     await client.userApi.deactivateUser({ userId: user.okta_id ?? "" });
     await client.userApi.deleteUser({ userId: user.okta_id ?? "" });
     return user;
@@ -122,25 +123,29 @@ const Mutation = {
     { input }: { input: user },
     { prisma }: ContextInterface,
   ): Promise<string> => {
+    const user = await prisma.user.create({
+      data: {
+        ...input,
+        role: input.role || 0,
+        password: Buffer.from(input.password ?? ""),
+      },
+    });
     const body = {
       profile: {
         firstName: input.name ? input.name.toString() : undefined,
         lastName: ".",
         email: input.email ? input.email.toString() : undefined,
-        login: input.email ? input.email.toString() : undefined
+        login: input.email ? input.email.toString() : undefined,
+        dbid: user.id,
       },
       credentials: {
         password: { value: input.password?.toString() ?? "" }
       }
     }
     const result = await client.userApi.createUser({ body });
-    const user = await prisma.user.create({
-      data: {
-        ...input,
-        role: input.role || 0,
-        password: Buffer.from(input.password ?? ""),
-        okta_id: result.id,
-      },
+    await prisma.user.update({
+      where: { id: user.id, },
+      data: { okta_id: result.id },
     });
     if (result && user)
       return "Sign up success";
@@ -151,27 +156,26 @@ const Mutation = {
     { input }: { input: user },
     { prisma }: ContextInterface,
   ): Promise<string | undefined> => {
-    // return authClient.signInWithCredentials({
-    //   username: input.email ?? '',
-    //   password: input.password?.toString() ?? ''
-    // })
-    //   .then(function (transaction) {
-    //     if (transaction.status === 'SUCCESS') {
-    //       // authClient.session.setCookieAndRedirect(transaction.sessionToken); // Sets a cookie on redirect
-    //       return transaction.sessionToken;
-    //     } else {
-    //       throw new Error(transaction.status);
-    //     }
-    //   })
-    //   .catch(function (err) {
-    //     throw new Error(err);
-    //   });
     const transaction = await authClient.signInWithCredentials({
       username: input.email ?? '',
       password: input.password?.toString() ?? ''
     });
+    await authClient.signInWithCredentials({
+      username: input.email ?? '',
+      password: input.password?.toString() ?? ''
+    });
     if (transaction.status === 'SUCCESS') {
-      return transaction.sessionToken;
+      const userdb = await prisma.user.findFirst({ where: { email: input.email } })
+      const user = await client.userApi.getUser({ userId: userdb?.okta_id?.toString() ?? "" });
+      const updateuser = {
+        ...user,
+        profile: {
+          ...user.profile,
+          ostk: transaction.sessionToken
+        }
+      }
+      await client.userApi.updateUser({ userId: userdb?.okta_id?.toString() ?? "", user: updateuser })
+      return transaction.sessionToken + "." + userdb?.okta_id;
     } else {
       throw new Error(transaction.status);
     }

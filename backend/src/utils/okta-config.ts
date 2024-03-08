@@ -2,8 +2,8 @@ import dotenv from "dotenv";
 import {
     OktaAuth,
     OktaAuthOptions,
-    // TokenManagerInterface,
-    // AccessToken,
+    TokenManagerInterface,
+    AccessToken,
     // IDToken,
     // UserClaims,
     // TokenParams
@@ -17,11 +17,13 @@ const client = new okta.Client({
 
 const config: OktaAuthOptions = {
     issuer: process.env.OKTADOMAIN || 'https://trial-7162432.okta.com/oauth2/default',
+    clientId: process.env.CLIENTID
 };
 
 const authClient: OktaAuth = new OktaAuth(config);
-// const tokenManager: TokenManagerInterface = authClient.tokenManager;
-// const accessToken: AccessToken = await tokenManager.get('accessToken') as AccessToken;
+
+const tokenManager: TokenManagerInterface = authClient.tokenManager;
+const accessToken: AccessToken = tokenManager.get('accessToken') as unknown as AccessToken;
 // const idToken: IDToken = await tokenManager.get('idToken') as IDToken;
 // const userInfo: UserClaims = await authClient.token.getUserInfo(accessToken, idToken);
 
@@ -31,5 +33,6 @@ const authClient: OktaAuth = new OktaAuth(config);
 //   };
 //   authClient.token.getWithRedirect(tokenParams);
 // }
+// authClient.start();
 
-export { client, authClient }
+export { client, authClient, accessToken }

@@ -31,6 +31,7 @@ const ShopSchema = gql`
   extend type Query {
     user(id: ID!): User
     users: [User]
+    getme: User
     helloWord: String
   }
 
