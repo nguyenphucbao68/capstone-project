@@ -41,4 +41,7 @@ export {
   ThumbsDown as IconThumbsDown,
   Settings as IconSettings,
   LogOut as IconLogOut,
+  X as IconX,
+  PenTool as IconPenTool,
+  Trash2 as IconTrash2,
 } from 'react-feather';
