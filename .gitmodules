@@ -1,0 +1,3 @@
+[submodule "rest-api-node-typescript"]
+	path = rest-api-node-typescript
+	url = https://github.com/nmanikiran/rest-api-node-typescript
