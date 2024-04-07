@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import Logger from "../../utils/logger";
 import { ContextInterface } from "../context";
 import { SearchJobRequestDto } from "./dtos/SearchJobRequestDto";
+import { JobSearchKeyCache, SEARCH_DOMAIN } from "../../constants/constant";
+import crypto from 'crypto';
 dotenv.config();
 
 const Query = {
@@ -10,13 +12,28 @@ const Query = {
   searchJob: async (
     _: any,
     { query, skip = 0, take = 10, ...filter }: SearchJobRequestDto,
-    { prisma, elastic, authUser }: ContextInterface,
+    { prisma, elastic, authUser, redis }: ContextInterface,
   ): Promise<{ total: number; jobs: job[] }> => {
     const logger = new Logger();
     logger.info(`searching for jobs with query: ${query}`);
     try {
       let jobs = [],
-        total = 0;
+        total = 0,
+        searchQuery = {};
+      if (query) {
+        searchQuery = {
+          multi_match: {
+            query,
+            fields: ["name", "skills"]
+          }
+        };
+      } else {
+        searchQuery = {
+          match_all: {}
+        };
+      }
+
+
       let where: Record<string, any> = {};
 
       if (filter.unit !== undefined) {
@@ -68,56 +85,84 @@ const Query = {
           },
         };
       }
-
-      // Not search
-      if (!query) {
-        jobs = await prisma.job.findMany({
-          where: where,
-          include: {
-            job_working_location: {
-              include: {
-                company_location: true,
-              },
-            },
-            company: true,
-          },
-        });
-        total = jobs.length;
-        jobs = jobs.slice(skip, skip + take);
-      } else {
-        const result = await elastic.search({
-          index: "job",
-          body: {
-            query: {
-              multi_match: {
-                query,
-                fields: ["name", "skills"],
-              },
-            },
-            from: skip,
-            size: take,
-          },
-        });
-
-        logger.info(`search result: ${JSON.stringify(result)}`);
-
-        total = ((result as any).hits.total.value as number) || 0;
-        const job_ids = result.hits.hits.map((hit: any) => hit._source.id);
-        jobs = await prisma.job.findMany({
-          where: {
-            id: { in: job_ids },
-            ...where,
-          },
-          include: {
-            job_working_location: {
-              include: {
-                company_location: true,
-              },
-            },
-            company: true,
-          },
-        });
+      let domain = SEARCH_DOMAIN.Public;
+      if (authUser) {
+        domain = SEARCH_DOMAIN.Authorized;
       }
+      const hasKeyFromSearchQuery = crypto.createHash('md5').update(query).digest('hex');
+      const sessionKey = JobSearchKeyCache(hasKeyFromSearchQuery, domain);
+
+      const cachedResult = await new Promise<{ total: number; jobs: job[] }>((resolve, reject) => {
+        redis.get(sessionKey, async (err, data) => {
+          if (err) {
+            logger.error("error getting data from redis", err);
+            reject(err);
+            return;
+          }
+          if (data) {
+            const parseData = JSON.parse(data);
+            const total = parseData.total || 0;
+            const job_ids = parseData.jobs.map((job: any) => job.id);
+            jobs = await prisma.job.findMany({
+              where: {
+                id: { in: job_ids },
+                ...where,
+              },
+              include: {
+                job_working_location: {
+                  include: {
+                    company_location: true,
+                  },
+                },
+                company: true,
+              },
+            });
+            resolve({
+              total,
+              jobs,
+            });
+          } else {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            resolve(null);
+          }
+        });
+      });
+      if (cachedResult) {
+        logger.info("Returned cached search result");
+        return cachedResult; // Trả về kết quả cache nếu có
+      }
+      // Not search
+      const result = await elastic.search({
+        index: "job",
+        body: {
+          query: searchQuery,
+          from: skip,
+          size: take,
+        },
+      });
+      total = ((result as any).hits.total.value as number) || 0;
+      jobs = result.hits.hits.map((hit: any) => hit._source);
+      redis.set(sessionKey, JSON.stringify({ total, jobs }), "EX", 300, (err) => {
+        if (err) {
+          logger.error("error setting data to redis", err);
+        }
+      });
+      const job_ids = result.hits.hits.map((hit: any) => hit._source.id);
+      jobs = await prisma.job.findMany({
+        where: {
+          id: { in: job_ids },
+          ...where,
+        },
+        include: {
+          job_working_location: {
+            include: {
+              company_location: true,
+            },
+          },
+          company: true,
+        },
+      });
 
       if (authUser) {
         // check applied jobs
@@ -153,7 +198,7 @@ const Query = {
           };
         });
       }
-
+      logger.info("Returned search result");
       return {
         total,
         jobs,

@@ -17,6 +17,7 @@ import Logger from "./logger";
 import prisma from "./prisma";
 import ProducerFactory from "./kafka";
 import mailerService from "../services/mailer";
+import redis from "./redis";
 require("dotenv").config();
 const { makeExecutableSchema } = require("@graphql-tools/schema");
 
@@ -108,6 +109,7 @@ export const createApolloServer = (
         kafkaProducer,
         mailer: mailerService,
         trail,
+        redis
       });
     },
     validationRules: [depthLimit(20)],
