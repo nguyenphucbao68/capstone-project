@@ -1,4 +1,4 @@
-import { job } from "@prisma/client";
+import { PrismaClient, job } from "@prisma/client";
 import dotenv from "dotenv";
 import Logger from "../../utils/logger";
 import { ContextInterface } from "../context";
@@ -92,7 +92,7 @@ const Query = {
       const hasKeyFromSearchQuery = crypto.createHash('md5').update(query).digest('hex');
       const sessionKey = JobSearchKeyCache(hasKeyFromSearchQuery, domain);
 
-      const cachedResult = await new Promise<{ total: number; jobs: job[] }>((resolve, reject) => {
+      const cachedResult = await new Promise<{ total: number; jobs: job[] } | null>((resolve, reject) => {
         redis.get(sessionKey, async (err, data) => {
           if (err) {
             logger.error("error getting data from redis", err);
@@ -103,27 +103,12 @@ const Query = {
             const parseData = JSON.parse(data);
             const total = parseData.total || 0;
             const job_ids = parseData.jobs.map((job: any) => job.id);
-            jobs = await prisma.job.findMany({
-              where: {
-                id: { in: job_ids },
-                ...where,
-              },
-              include: {
-                job_working_location: {
-                  include: {
-                    company_location: true,
-                  },
-                },
-                company: true,
-              },
-            });
+            jobs = await processFilterSearchResult(prisma, job_ids, where, authUser);
             resolve({
               total,
               jobs,
             });
           } else {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             resolve(null);
           }
         });
@@ -149,55 +134,7 @@ const Query = {
         }
       });
       const job_ids = result.hits.hits.map((hit: any) => hit._source.id);
-      jobs = await prisma.job.findMany({
-        where: {
-          id: { in: job_ids },
-          ...where,
-        },
-        include: {
-          job_working_location: {
-            include: {
-              company_location: true,
-            },
-          },
-          company: true,
-        },
-      });
-
-      if (authUser) {
-        // check applied jobs
-        const appliedJobs = await prisma.job_apply.findMany({
-          where: {
-            user_id: authUser.sub,
-            job_id: {
-              in: jobs.map((job) => job.id),
-            },
-          },
-        });
-
-        const savedJobs = await prisma.job_saved.findMany({
-          where: {
-            user_id: authUser.sub,
-            job_id: {
-              in: jobs.map((job) => job.id),
-            },
-          },
-        });
-
-        jobs = jobs.map((job) => {
-          const applied = appliedJobs.find(
-            (applied) => applied.job_id === job.id,
-          );
-          const saved = savedJobs.find((saved) => saved.job_id === job.id);
-          return {
-            ...job,
-            is_hot: appliedJobs.length >= 10,
-            was_applied: !!applied,
-            saved: !!saved,
-            applied,
-          };
-        });
-      }
+      jobs = await processFilterSearchResult(prisma, job_ids, where, authUser);
       logger.info("Returned search result");
       return {
         total,
@@ -211,6 +148,53 @@ const Query = {
       };
     }
   },
+};
+
+const processFilterSearchResult = async (prisma: PrismaClient, jobIds: string[], where: Record<string, any>, authUser: any): Promise<job[]> => {
+  let jobs = await prisma.job.findMany({
+    where: { id: { in: jobIds }, ...where },
+    include: {
+      job_working_location: { include: { company_location: true } },
+      company: true,
+    },
+  });
+
+  if (authUser) {
+    // check applied jobs
+    const appliedJobs = await prisma.job_apply.findMany({
+      where: {
+        user_id: authUser.sub,
+        job_id: {
+          in: jobs.map((job) => job.id),
+        },
+      },
+    });
+
+    const savedJobs = await prisma.job_saved.findMany({
+      where: {
+        user_id: authUser.sub,
+        job_id: {
+          in: jobs.map((job) => job.id),
+        },
+      },
+    });
+
+    jobs = jobs.map((job) => {
+      const applied = appliedJobs.find(
+        (applied) => applied.job_id === job.id,
+      );
+      const saved = savedJobs.find((saved) => saved.job_id === job.id);
+      return {
+        ...job,
+        is_hot: appliedJobs.length >= 10,
+        was_applied: !!applied,
+        saved: !!saved,
+        applied,
+      };
+    });
+  }
+
+  return jobs;
 };
 
 export default { Query };
