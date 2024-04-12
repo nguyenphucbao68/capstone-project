@@ -57,6 +57,6 @@
     "typescript-transform-paths": "^3.4.7"
   },
   "engines": {
-    "node": "20"
+    "node": "18"
   }
 }

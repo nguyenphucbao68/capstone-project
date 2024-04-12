@@ -104,3 +104,32 @@ export const DELETE_COMPANY = gql`
     }
   }
 `;
+
+export type GetCompanyBySlugResponse = DataResponse<'companyBySlug', Company>;
+export type GetCompanyBySlugVariable = { companySlug: string };
+
+export const GET_COMPANY_BY_SLUG = gql`
+  query CompanyBySlug($companySlug: String!) {
+    companyBySlug(slug: $companySlug) {
+      id
+      company_name
+      company_type
+      country
+      working_day
+      ot_policy
+      company_size
+      overview
+      company_website
+      company_facebook
+      brief_overview
+      company_location {
+        id
+        company_id
+        address
+        long
+        lat
+      }
+      enable
+    }
+  }
+`;

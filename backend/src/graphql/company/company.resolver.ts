@@ -1,4 +1,7 @@
-import { company, company_request } from "@prisma/client";
+import { 
+  company, 
+  // company_request 
+} from "@prisma/client";
 
 import { ContextInterface } from "../context";
 import { EVENT } from "../../constants/elasticsearch";
@@ -18,6 +21,19 @@ const Query = {
     });
     return companyByID;
   },
+  companyBySlug: async (
+    _: any,
+    { slug }: { slug: string },
+    { prisma }: ContextInterface,
+): Promise<company | null> => {
+    const companyBySlug = await prisma.company.findUnique({
+      where: { slug },
+      include: {
+        company_location: true,
+      },
+    });
+    return companyBySlug;
+},
   companies: async (
     _: any,
     _args: any,
@@ -44,14 +60,14 @@ const Query = {
     return jobs;
   },
   //Show list of company request
-  companyRequests: async (
-    _: any,
-    _args: any,
-    { prisma }: ContextInterface,
-  ): Promise<company_request[]> => {
-    const companyRequests = await prisma.company_request.findMany();
-    return companyRequests;
-  },
+  // companyRequests: async (
+  //   _: any,
+  //   _args: any,
+  //   { prisma }: ContextInterface,
+  // ): Promise<company_request[]> => {
+  //   const companyRequests = await prisma.company_request.findMany();
+  //   return companyRequests;
+  // },
 };
 const Mutation = {
   //Add a new company
@@ -121,26 +137,27 @@ const Mutation = {
     return deletedCompany;
   },
   //Add a new company request
-  createCompanyRequest: async (
-    _: any,
-    { input }: { input: company_request },
-    { prisma }: ContextInterface,
-  ): Promise<company_request> => {
-    const newCompanyRequest = await prisma.company_request.create({
-      data: input,
-    });
-    return newCompanyRequest;
-  }, // Delete a company request by ID
-  deleteCompanyRequest: async (
-    _: any,
-    { id }: { id: string },
-    { prisma }: ContextInterface,
-  ): Promise<company_request | null> => {
-    const deletedCompanyRequest = await prisma.company_request.delete({
-      where: { id },
-    });
-    return deletedCompanyRequest;
-  },
+  // createCompanyRequest: async (
+  //   _: any,
+  //   { input }: { input: company_request },
+  //   { prisma }: ContextInterface,
+  // ): Promise<company_request> => {
+  //   const newCompanyRequest = await prisma.company_request.create({
+  //     data: input,
+  //   });
+  //   return newCompanyRequest;
+  // }, 
+  // Delete a company request by ID
+  // deleteCompanyRequest: async (
+  //   _: any,
+  //   { id }: { id: string },
+  //   { prisma }: ContextInterface,
+  // ): Promise<company_request | null> => {
+  //   const deletedCompanyRequest = await prisma.company_request.delete({
+  //     where: { id },
+  //   });
+  //   return deletedCompanyRequest;
+  // },
 };
 
 export default { Query, Mutation };

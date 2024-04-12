@@ -1,16 +1,27 @@
 'use client';
 
-import { IconGlobe, IconFacebook } from "../Icons";
+import Link from 'next/link';
 
-const CompanyOverview = () => {
-    return (
-        <div className="bg-white rounded-lg px-[20px] pt-[24px] pb-[32px] mb-[20px] md:p-[24px] md:pb-[32px]" style={{boxShadow: "0px 6px 32px rgba(0,0,0,.08)"}}>
-            {/* Header */}
-            <h2 className="border-bottom-dashed pb-[16px]"> Company overview </h2>
+import { Company } from '@/types/company';
 
-            {/* Paragraph */}
-            <div className="paragraph pt-[16px] text-break">         
-                The NAB Innovation Centre Vietnam is owned by NAB - Australia’s largest business bank.
+import { IconFacebook, IconGlobe } from '../Icons';
+
+type Props = {
+  company: Company;
+};
+
+const CompanyOverview = ({ company }: Props) => {
+  return (
+    <div
+      className='mb-[20px] rounded-lg bg-white px-[20px] pb-[32px] pt-[24px] md:p-[24px] md:pb-[32px]'
+      style={{ boxShadow: '0px 6px 32px rgba(0,0,0,.08)' }}
+    >
+      {/* Header */}
+      <h2 className='border-bottom-dashed pb-[16px]'> Company overview </h2>
+
+      {/* Paragraph */}
+      <div className='paragraph text-break pt-[16px]'>
+        {/* The NAB Innovation Centre Vietnam is owned by NAB - Australia’s largest business bank.
                 <p>
                     The NAB Innovation Centre Vietnam (NAB Vietnam) is part of National Australia Bank (NAB) Technology & Enterprise Operations division. 
                     The mission of the NAB Vietnam is to connect the talents of Vietnam to NAB and together improve the lives of those in the Vietnam technology community.
@@ -33,23 +44,30 @@ const CompanyOverview = () => {
                 <p>
                 We believe in people with ideas and dreams, and we want you to achieve your aspirations. If you have an appetite to learn, grow and elevate others around you, 
                 this is the place for you!
-                </p>
-            </div>
+                </p> */}
+        {/* {company.overview} */}
+        <div dangerouslySetInnerHTML={{ __html: company.overview }}></div>
+      </div>
 
-            {/* Icon */}
-            <div className="flex flex-col md:flex-row paragraph border-top-dashed mt-[16px]">
-                <div className="flex items-center cursor-pointer pt-[16px] pr-[16px]">
-                    <IconGlobe width={20} height={20} color="#0e2eed"/>
-                    <div className="pl-[4px] hyperlink">Company website</div>
-                </div>
-                <div className="flex items-center cursor-pointer pt-[16px] pr-[16px]">
-                    <IconFacebook width={20} height={20} color="#0e2eed"/>
-                    <div className="pl-[4px] hyperlink">Fanpage Facebook</div>
-                </div>
-            </div>
+      {/* Icon */}
+      <div className='paragraph border-top-dashed mt-[16px] flex flex-col md:flex-row'>
+        <div className='flex cursor-pointer items-center pr-[16px] pt-[16px]'>
+          <IconGlobe width={20} height={20} color='#0e2eed' />
+          <div className='hyperlink pl-[4px]'>
+            <Link href={company.company_website} passHref>
+              Company website
+            </Link>
+          </div>
         </div>
-        
-    )
-}
+        <div className='flex cursor-pointer items-center pr-[16px] pt-[16px]'>
+          <IconFacebook width={20} height={20} color='#0e2eed' />
+          <div className='hyperlink pl-[4px]'>
+            <Link href={company.company_facebook}>Fanpage Facebook</Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default CompanyOverview;

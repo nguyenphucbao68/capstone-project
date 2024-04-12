@@ -20,7 +20,7 @@ const CompanyNavbar = () => {
             href={routes.company.path}
             className={`tab-link ${
               currentPage === routes.company.path ||
-              currentPage === '/vi/companies'
+              currentPage === '/vi/companies/[slug]'
                 ? 'active'
                 : ''
             }`}
@@ -33,7 +33,7 @@ const CompanyNavbar = () => {
             href={routes.companyReview.path}
             className={`tab-link ${
               currentPage === routes.companyReview.path ||
-              currentPage === '/vi/companies/review'
+              currentPage === '/vi/companies/[slug]/review'
                 ? 'active'
                 : ''
             }`}

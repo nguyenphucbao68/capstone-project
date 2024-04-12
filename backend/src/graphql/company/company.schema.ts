@@ -13,6 +13,7 @@ const CompanySchema = gql`
   type CompanyPayload {
     id: ID!
     company_name: String!
+    slug: String!
     company_type: String
     country: String
     working_day: String
@@ -65,6 +66,7 @@ const CompanySchema = gql`
     jobCompany(id: ID!): [JobPayLoad]
     companies: [CompanyPayload!]
     company(id: ID!): CompanyPayload
+    companyBySlug(slug: String!): CompanyPayload
     companyReviews: [CompanyReview!]
     companyReview(id: ID!): CompanyReview
     searchCompany(query: String!, skip: Int, take: Int): [CompanyPayload]
