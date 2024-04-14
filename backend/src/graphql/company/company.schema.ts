@@ -37,6 +37,27 @@ const CompanySchema = gql`
     jobs: [String]
   }
 
+  type CompanySpotlightPayload {
+    id: ID!
+    company_name: String!
+    company_type: String
+    country: String
+    working_day: String
+    ot_policy: String
+    company_size: String
+    overview: String
+    company_website: String
+    company_facebook: String
+    brief_overview: String
+    representative: String
+    representative_position: String
+    email: String
+    phone: String
+    company_location: [CompanyLocate]
+    enable: Boolean
+    job: [JobPayLoad]
+  }
+
   type CompanyReview {
     id: ID!
     company_id: String!
@@ -66,7 +87,11 @@ const CompanySchema = gql`
     jobCompany(id: ID!): [JobPayLoad]
     companies: [CompanyPayload!]
     company(id: ID!): CompanyPayload
+<<<<<<< HEAD
     companyBySlug(slug: String!): CompanyPayload
+=======
+    companySpotlight: CompanySpotlightPayload
+>>>>>>> bead71b9c4a705d72c47fd6d6cd1e3fc1d104719
     companyReviews: [CompanyReview!]
     companyReview(id: ID!): CompanyReview
     searchCompany(query: String!, skip: Int, take: Int): [CompanyPayload]
