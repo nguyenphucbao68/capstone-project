@@ -4,8 +4,13 @@ import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/Button';
 import { IconBriefcase, IconMapPin, IconStar } from '@/components/Icons';
+import { Company } from '@/types/company';
 
-const CompanyCard = () => {
+type Props = {
+  company: Company;
+};
+
+const CompanyCard = ({ company }: Props) => {
   const [rate] = useState(4.5);
   const [widthRate, setWidthRate] = useState(0);
 
@@ -22,11 +27,12 @@ const CompanyCard = () => {
             <div className='flex-column flex md:flex-row'>
               {/* Logo */}
               <div className='flex justify-center'>
-                <div className='logo ime-md-6 text-center'>
+                <div className='logo ime-md-6 rounded text-center'>
                   <img
                     alt='hide-the-best-it'
                     className='w-full'
-                    src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg'
+                    // src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg'
+                    src='https://res2.weblium.site/res/63f4fed80954cc000db19f41/63fdfbf3afe4ff000d632bb3_optimized'
                   />
                 </div>
               </div>
@@ -34,7 +40,7 @@ const CompanyCard = () => {
               {/* Company's Info */}
               <div>
                 <h1 className='text-md-start ipt-4 ipb-2 ipt-md-0 text-center'>
-                  NAB Innovation Centre Vietnam
+                  {company.company_name}
                 </h1>
                 <div className='flex-column flex md:flex-row'>
                   <div className='flex justify-center gap-x-[8px] pb-[8px] md:pb-0 md:pr-[24px]'>

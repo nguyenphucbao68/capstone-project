@@ -30,6 +30,19 @@ const Query = {
     });
     return companies;
   },
+  companyBySlug: async (
+    _: any,
+    { slug }: { slug: string },
+    { prisma }: ContextInterface,
+  ): Promise<company | null> => {
+    const companyBySlug = await prisma.company.findUnique({
+      where: { slug },
+      include: {
+        company_location: true,
+      },
+    });
+    return companyBySlug;
+  },
   companySpotlight: async (
     _: any,
     _args: any,
