@@ -11,7 +11,8 @@
     "overview": "<ul><li>Specializing in custom software development.</li><li>Global outsourcing solutions for businesses.</li></ul>",
     "company_website": "http://www.techsolutions.com",
     "company_facebook": "http://www.facebook.com/TechSolutions",
-    "slug": "golden-owl-consulting-company"
+    "slug": "golden-owl-consulting-company",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
   },
   {
     "id": "e3e1a88f-d32b-44f9-99a4-1011a8c0e54a",
@@ -25,7 +26,8 @@
     "overview": "<ul><li>Leading provider of innovative software products.</li><li>Focus on cutting-edge technology solutions.</li></ul>",
     "company_website": "http://www.innovatetech.com",
     "company_facebook": "http://www.facebook.com/InnovateTech",
-    "slug": "bosch-global-software-technologies-company-limited"
+    "slug": "bosch-global-software-technologies-company-limited",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
   },
   {
     "id": "381d63ca-54b4-4fc6-8c9a-d6f22ac12b35",
@@ -39,7 +41,8 @@
     "overview": "<ul><li>Specialized in executive search and talent acquisition.</li><li>Connecting top talent with leading organizations.</li></ul>",
     "company_website": "http://www.talentsearch.com",
     "company_facebook": "http://www.facebook.com/TalentSearch",
-    "slug": "talent-search"
+    "slug": "talent-search",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
   },
   {
     "id": "367b208a-493f-4a10-9747-d487af4f0864",
@@ -53,7 +56,8 @@
     "overview": "<ul><li>Providing comprehensive IT services and consulting.</li><li>Expertise in digital transformation and IT strategy.</li></ul>",
     "company_website": "http://www.employmenthero.com",
     "company_facebook": "http://www.facebook.com/EmploymentHeroVN",
-    "slug": "employment-hero"
+    "slug": "employment-hero",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
   },
   {
     "id": "a24b1722-518c-40af-b9ac-478a5f79db48",
@@ -67,6 +71,37 @@
     "overview": "<ul><li>Leading sustainability initiatives and eco-friendly solutions.</li><li>Dedicated to creating a positive environmental impact.</li></ul>",
     "company_website": "http://www.greeninnovations.com",
     "company_facebook": "http://www.facebook.com/GreenInnovations",
-    "slug": "green-innovations"
+    "slug": "green-innovations",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
+  },
+  {
+    "id": "512f71b7-b583-499a-aa5d-da43913e3101",
+    "company_name": "Trusting Social",
+    "company_type": "IT Product",
+    "company_size": "301-500",
+    "country": "Singapore",
+    "working_day": "Monday - Friday",
+    "ot_policy": "No OT",
+    "brief_overview": "Building technology to revolutionise the Digital Banking with Cloud engineering.",
+    "overview": "<ul><li>Leading sustainability initiatives and eco-friendly solutions.</li><li>Dedicated to creating a positive environmental impact.</li></ul>",
+    "company_website": "https://trustingsocial.com/",
+    "company_facebook": "https://www.facebook.com/trustingsocialcareers",
+    "slug": "trusting-social",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBKzAyREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--075b845e4ca616272194e185c5ed16fa35d656fc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hKeVpYTnBlbVZmZEc5ZlptbDBXd2RwQWFvdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--be8303cd58d898b976ab84bbfd3800ba60f90a5c/trusting-social-logo.jpeg"
+  },
+  {
+    "id": "c16edb6f-3cf1-4842-a4d7-3fae5319887c",
+    "company_name": "NAB Innovation Centre Vietnam",
+    "company_type": "IT Product",
+    "company_size": "1000+",
+    "country": "Australia",
+    "working_day": "Monday - Friday",
+    "ot_policy": "No OT",
+    "brief_overview": "Building technology to revolutionise the Digital Banking with Cloud engineering.",
+    "overview": "The NAB Innovation Centre Vietnam is owned by NAB - Australia’s largest business bank.<p>The NAB Innovation Centre Vietnam (NAB Vietnam) is part of National Australia Bank&nbsp;(NAB) Technology &amp; Enterprise Operations division. The mission of the NAB Vietnam is to connect the talents&nbsp;of Vietnam to NAB and together improve the lives of those in the Vietnam technology community.</p><p>As Australia’s largest business bank,&nbsp;NAB is focused on delivering great experiences for customers. To do this it uses modern technologies, alongside great technology talent including leading software engineers, cloud experts and quality engineers.</p><p><strong>We’re working on interesting projects to help NAB’s 10 million customers:</strong>&nbsp;By joining&nbsp;us,&nbsp;local software engineers will have&nbsp;access to a wide variety of projects and opportunities, working closely with&nbsp;colleagues in Australia and with global partners such as AWS and Microsoft to take advantage of the latest&nbsp;modern&nbsp;technologies.</p><p><strong>We’re investing in you:</strong> We strive&nbsp;to create not only a great place to work, but also the best technology centre for tech engineers to thrive.</p><p><strong>It’s more than just a career!</strong></p><p>We believe in people with ideas and dreams, and we want you to achieve your aspirations. If you have an appetite to learn, grow and elevate others around you, this is the place for you!</p>",
+    "company_website": "https://careers-vietnam.nab.com.au/jobs/search",
+    "company_facebook": "https://www.facebook.com/NABVietnam",
+    "slug": "nab-innovation-centre-vietnam",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
   }
 ]

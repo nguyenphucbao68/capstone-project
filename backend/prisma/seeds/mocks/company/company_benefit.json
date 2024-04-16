@@ -28,5 +28,17 @@
     "key_benefit": "<ul><li>Work-Life Balance Initiatives</li><li>Community Engagement Opportunities</li></ul>",
     "detail_description": "<p>GreenInnovations values the well-being of its employees and promotes work-life balance initiatives. We also encourage community engagement, providing opportunities to make a positive impact beyond the workplace.</p>",
     "company_images": "[\"https://picsum.photos/200/300\",\"https://picsum.photos/200/300\"]"
+  },
+  {
+    "company_id": "512f71b7-b583-499a-aa5d-da43913e3101",
+    "key_benefit": "<ul><li>Work-Life Balance Initiatives</li><li>Community Engagement Opportunities</li></ul>",
+    "detail_description": "<p>GreenInnovations values the well-being of its employees and promotes work-life balance initiatives. We also encourage community engagement, providing opportunities to make a positive impact beyond the workplace.</p>",
+    "company_images": "[\"https://picsum.photos/200/300\",\"https://picsum.photos/200/300\"]"
+  },
+  {
+    "company_id": "c16edb6f-3cf1-4842-a4d7-3fae5319887c",
+    "key_benefit": "<li class='list-disc py-[4px] font-[700]'>Very competitive remuneration package</li><li class='list-disc py-[4px] font-[700]'>Build products for millions of users in Australia</li><li class='list-disc py-[4px] font-[700]'>Hybrid and flexible working environment</li>",
+    "detail_description": "<p>GreenInnovations values the well-being of its employees and promotes work-life balance initiatives. We also encourage community engagement, providing opportunities to make a positive impact beyond the workplace.</p>",
+    "company_images": "[\"https://picsum.photos/200/300\",\"https://picsum.photos/200/300\"]"
   }
 ]

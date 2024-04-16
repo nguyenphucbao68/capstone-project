@@ -17,6 +17,7 @@ export type Company = {
   company_location: CompanyLocate[];
   enable: boolean;
   slug: string;
+  logo: string;
 };
 export type CompanyLocate = {
   id: string;
@@ -24,6 +25,17 @@ export type CompanyLocate = {
   address: string;
   long: number;
   lat: number;
+};
+export type CompanyKeySkill = {
+  key_skills: string;
+  description: string;
+  company_id: string;
+};
+export type CompanyBenefit = {
+  key_benefit: string;
+  detail_description: string;
+  company_images: string;
+  company_id: string;
 };
 export type UpdateCompanyInput = {
   brief_overview: string;

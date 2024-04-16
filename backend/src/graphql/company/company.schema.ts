@@ -10,6 +10,18 @@ const CompanySchema = gql`
     long: Float
     lat: Float
   }
+  type CompanyKeySkill {
+    key_skills: String
+    description: String
+    company_id: ID
+  }
+  
+  type CompanyBenefit {
+    key_benefit: String
+    detail_description: String
+    company_images: String
+    company_id: ID
+  }
   type CompanyPayload {
     id: ID!
     company_name: String!
@@ -27,8 +39,11 @@ const CompanySchema = gql`
     email: String
     phone: String
     company_location: [CompanyLocate]
+    company_key_skill: [CompanyKeySkill]
+    company_benefit: [CompanyBenefit]
     enable: Boolean
     slug: String!
+    logo: String!
   }
   # type JobPayLoad{
 

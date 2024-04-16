@@ -39,6 +39,8 @@ const Query = {
       where: { slug },
       include: {
         company_location: true,
+        company_benefit: true,
+        company_key_skill: true,
       },
     });
     return companyBySlug;

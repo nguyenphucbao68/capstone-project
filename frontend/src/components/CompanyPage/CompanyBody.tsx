@@ -30,7 +30,7 @@ const CompanyBody = ({ company }: Props) => {
           </div>
           {/* Jobs Listing */}
           <div className='job-listing-wrapper col-span-12 pl-[14px] md:col-span-4'>
-            <CompanyJobs />
+            <CompanyJobs company={company} />
           </div>
         </div>
       </div>

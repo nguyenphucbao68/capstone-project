@@ -50,8 +50,8 @@
   },
   {
     "id": "83984d01-2095-482a-a3ba-5bd9ab5fbbcd",
-    "company_id": "367b208a-493f-4a10-9747-d487af4f0864",
-    "address": "210 Solutions Plaza, Tan Binh District, Ho Chi Minh City, Vietnam",
+    "company_id": "512f71b7-b583-499a-aa5d-da43913e3101",
+    "address": "Ho Chi Minh",
     "long": 106.6576,
     "lat": 10.8009
   },
@@ -64,8 +64,8 @@
   },
   {
     "id": "8e0b1cdd-da87-4f53-b8a2-66ebabcd40b1",
-    "company_id": "a24b1722-518c-40af-b9ac-478a5f79db48",
-    "address": "876 Sustainable Street, Phu Nhuan District, Ho Chi Minh City, Vietnam",
+    "company_id": "c16edb6f-3cf1-4842-a4d7-3fae5319887c",
+    "address": "Ha Noi - Ho Chi Minh",
     "long": 106.677,
     "lat": 10.7993
   }

@@ -163,21 +163,22 @@ export const GET_COMPANY_BY_SLUG = gql`
       slug
       overview
       ot_policy
-      enable
-      email
       company_size
       company_location {
         address
-        company_id
-        id
-        lat
-        long
       }
       company_facebook
-      phone
-      representative
-      representative_position
       working_day
+      logo
+      company_benefit {
+        key_benefit
+        detail_description
+        company_images
+      }
+      company_key_skill {
+        description
+        key_skills
+      }
     }
   }
 `;

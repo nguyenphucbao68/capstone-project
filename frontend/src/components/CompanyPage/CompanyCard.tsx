@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/Button';
-import { IconBriefcase, IconMapPin, IconStar } from '@/components/Icons';
+import { IconMapPin, IconStar } from '@/components/Icons';
 import { Company } from '@/types/company';
 
 type Props = {
@@ -32,7 +32,7 @@ const CompanyCard = ({ company }: Props) => {
                     alt='hide-the-best-it'
                     className='w-full'
                     // src='https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg'
-                    src='https://res2.weblium.site/res/63f4fed80954cc000db19f41/63fdfbf3afe4ff000d632bb3_optimized'
+                    src={company.logo}
                   />
                 </div>
               </div>
@@ -49,18 +49,17 @@ const CompanyCard = ({ company }: Props) => {
                     </span>
                     <div className='text-sm font-normal'>
                       {/* Address */}
-                      District 4, Ho Chi Minh
+                      {company.company_location[0].address}
                     </div>
                   </div>
-                  <div className='flex cursor-pointer justify-center gap-x-[8px]'>
+                  {/* <div className='flex cursor-pointer justify-center gap-x-[8px]'>
                     <span>
                       <IconBriefcase width={16} height={16} />
                     </span>
                     <div className='text-sm font-normal underline'>
-                      {/* Address */}
                       12 job openings
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className='ipb-md-0 flex gap-x-[12px] pt-[24px]'>
                   <Button
