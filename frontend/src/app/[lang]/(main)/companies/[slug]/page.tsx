@@ -16,6 +16,7 @@ export default function CompanyDetailPage({
   const slug = params.slug;
   const {
     data: { companyBySlug },
+    error,
   } = useSuspenseQuery<{ companyBySlug: Company }, { slug: string }>(
     GET_COMPANY_BY_SLUG,
     {
@@ -29,12 +30,18 @@ export default function CompanyDetailPage({
     return null;
   }
 
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <main className='companies-landing-container'>
-      <div>
-        <CompanyCard company={companyBySlug} />
-        <CompanyBody company={companyBySlug} />
-      </div>
+      {companyBySlug && (
+        <div>
+          <CompanyCard company={companyBySlug} />
+          <CompanyBody company={companyBySlug} />
+        </div>
+      )}
     </main>
   );
 }

@@ -15,6 +15,8 @@ export type Company = {
   email: string;
   phone: string;
   company_location: CompanyLocate[];
+  company_benefit: CompanyBenefit[];
+  company_key_skill: CompanyKeySkill[];
   enable: boolean;
   slug: string;
   logo: string;

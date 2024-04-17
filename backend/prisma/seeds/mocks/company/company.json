@@ -1,18 +1,18 @@
 [
   {
     "id": "9bf98d48-29c9-4fbd-a341-cfe940028e66",
-    "company_name": "Golden Owl Consulting Company",
-    "company_type": "IT Outsourcing",
-    "company_size": "51-150",
+    "company_name": "FPT Software",
+    "company_type": "IT Service and IT Consulting",
+    "company_size": "1000+",
     "country": "Vietnam",
     "working_day": "Monday - Friday",
-    "ot_policy": "No OT",
+    "ot_policy": "Extra salary for OT",
     "brief_overview": "The leading provider of software outsourcing services in Vietnam",
-    "overview": "<ul><li>Specializing in custom software development.</li><li>Global outsourcing solutions for businesses.</li></ul>",
-    "company_website": "http://www.techsolutions.com",
-    "company_facebook": "http://www.facebook.com/TechSolutions",
-    "slug": "golden-owl-consulting-company",
-    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
+    "overview": "The leading provider of software outsourcing services in Vietnam<p><i>FPT Software is part of FPT Corporation (FPT – HoSE) – the global leading technology, outsourcing and IT services group headquartered in Vietnam with nearly US$2 billion in revenue and more than 27000 employees. Qualified with CMMI Level 5 &amp; ISO 27001:2013, ASPICE LEVEL 3, FPT Software delivers world-class services in Smart factory, Digital platform, RPA, AI, IoT, Enterprise Mobilization, Cloud, AR/VR, Embedded System, Managed service, Testing, Platform modernization, Business Applications, Application Service, BPO and more services globally from delivery centers across the United States, Japan, Europe, Korea, China, Australia, Vietnam and the Asia Pacific.&nbsp;</i><br><br><i>In 2017, FPT Software has been placed in top 10 of the ranking for three consecutive years. Among top 10, FPT Software is the only IT Company.&nbsp;</i></p>",
+    "company_website": "https://career.fpt-software.com/",
+    "company_facebook": "https://www.facebook.com/FPTSoftware",
+    "slug": "fpt-software",
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOEJwSFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--10a9cdf11d126baa55d2186b1dd97bc867eb9a9e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--79eee5883893a012786006950460867831e6f661/logo%20FSOFT%20d%E1%BB%8Dc.png"
   },
   {
     "id": "e3e1a88f-d32b-44f9-99a4-1011a8c0e54a",
@@ -23,11 +23,11 @@
     "working_day": "Monday - Friday",
     "ot_policy": "No OT",
     "brief_overview": "The Bosch Group is a leading global supplier of technology and services",
-    "overview": "<ul><li>Leading provider of innovative software products.</li><li>Focus on cutting-edge technology solutions.</li></ul>",
-    "company_website": "http://www.innovatetech.com",
-    "company_facebook": "http://www.facebook.com/InnovateTech",
+    "overview": "The Bosch Group is a leading global supplier of technology and services<p><strong>The Bosch Group</strong> is a leading global supplier of technology and services. Its operations have been divided into four business sectors: Automotive Technology, Industrial Technology, Consumer Goods, and Energy and Building Technology.</p><p>The Bosch Group comprises Robert Bosch GmbH and its roughly 460 subsidiaries and regional companies in some 60 countries. If its sales and service partners are included, then Bosch is represented in roughly 150 countries.</p><p><strong>Bosch Global Software Technologies Company Limited (BGSV)&nbsp;i</strong>s 100% owned subsidiary of Robert Bosch GmbH - one of the world’s leading global suppliers of technology and services, offering end-to-end Engineering, IT, and Business Solutions.&nbsp;</p><p>Starting its operation from 2010 at Etown 2 in HCMC, BGSV is the first software development center of Bosch in Southeast Asia. BGSV nowadays have over 4,000 associates, with a global footprint and presence in the US, Europe, and the Asia Pacific region.&nbsp;</p><p>With our unique ability to offer end-to-end solutions that connect sensors, software, and services, we enable businesses to move from the traditional to digital or improve businesses by introducing a digital element in their products and processes.</p>",
+    "company_website": "https://www.bosch.com.vn/",
+    "company_facebook": "https://www.facebook.com/BoschGlobalSoftwareTechnologiesVietNam",
     "slug": "bosch-global-software-technologies-company-limited",
-    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMS9LSnc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f77c1653cf49260705bf77be3846954d9b817b70/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--89a7283b6fdfb4208cdc2b440a36613a6fae974c/logo.jpg"
+    "logo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXBSSkE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c842bcc876e105075b499085436333a814a0540b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RW5KbGMybDZaVjkwYjE5bWFYUmJCMmtCcWpBPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--79eee5883893a012786006950460867831e6f661/BOSCH_TOP_RGB.png"
   },
   {
     "id": "381d63ca-54b4-4fc6-8c9a-d6f22ac12b35",
@@ -83,7 +83,7 @@
     "working_day": "Monday - Friday",
     "ot_policy": "No OT",
     "brief_overview": "Building technology to revolutionise the Digital Banking with Cloud engineering.",
-    "overview": "<ul><li>Leading sustainability initiatives and eco-friendly solutions.</li><li>Dedicated to creating a positive environmental impact.</li></ul>",
+    "overview": "Making Financial Inclusion a Reality using Machine Learning and AI<p>We are an AI Fintech company specialized in assessing credit profiles of consumers in emerging markets combining pioneering AI with large alternative data sources. In 2020 we reached our ambitious milestone of credit profiling 1bn consumers spanning 4 countries - Vietnam, Indonesia, India &amp; the Philippines - and building a platform for the wider industry and the financial services industry, in particular, to provide the 'un &amp; under' served access to credit. At the core of this initiative has been our strict and unwavering adherence to the norms of consumer data privacy and consumer data rights.</p><p>But we're not satisfied as we embark on the next leg of our journey to deliver 100 million credit lines to consumers in the markets where we operate. Although this goal is ambitious, we truly believe that by harnessing the power of AI &amp; Big Data we can deliver financial access at an unprecedented scale.</p><p>As a firm, we're audacious problem-solvers motivated by our impact on society. We deeply espouse the values of ownership - of our actions and initiatives, integrity in all we do and agility in execution.</p>",
     "company_website": "https://trustingsocial.com/",
     "company_facebook": "https://www.facebook.com/trustingsocialcareers",
     "slug": "trusting-social",

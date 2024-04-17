@@ -25,7 +25,7 @@ const CompanyBody = ({ company }: Props) => {
             <CompanyGeneralInformation company={company} />
             <CompanyOverview company={company} />
             <CompanyKeySkill />
-            <CompanyBenefit />
+            <CompanyBenefit company={company} />
             <CompanyLocation />
           </div>
           {/* Jobs Listing */}
