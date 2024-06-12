@@ -31,6 +31,7 @@ model blog_tag {
 
 model company {
   company_name      String             @db.VarChar
+  slug              String?            @db.VarChar @unique
   company_type      String?            @db.VarChar
   country           String?            @db.VarChar
   working_day       String?            @db.VarChar
@@ -42,12 +43,13 @@ model company {
   brief_overview    String?            @db.VarChar
   id                String             @id(map: "company_pk") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   enable            Boolean?           @default(true)
-  company_benefit   company_benefit?
-  company_key_skill company_key_skill?
+  company_benefit   company_benefit[]
+  company_key_skill company_key_skill[]
   company_location  company_location[]
   follow            follow[]
   job               job[]
   review            review[]
+  logo              String?            @db.VarChar
 }
 
 model company_benefit {

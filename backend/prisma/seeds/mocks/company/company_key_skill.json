@@ -1,7 +1,7 @@
 [
   {
     "company_id": "9bf98d48-29c9-4fbd-a341-cfe940028e66",
-    "key_skills": "[\"C++\",\"JavaScript\",\"ReactJS\",\"NodeJS\",\"TypeScript\"]'",
+    "key_skills": "[\"C++\",\"Java\",\"Android\",\"SQL\",\"English\"]'",
     "description": "<ul><li>Embedded Software for Automotive Applications</li><li>Enterprise Software development using Java &amp; .Net</li><li>SAP Consulting</li></ul>"
   },
   {
@@ -10,17 +10,24 @@
   },
   {
     "company_id": "381d63ca-54b4-4fc6-8c9a-d6f22ac12b35",
-    "key_skills": "[\".NET\",\"QA and QC\",\"PHP\",\"Business Analyst\",\"TypeScript\"]'",
-    "description": "<ul><li>Python</li><li>Manual / Automation Test</li><li>Frontend (Angular/ReactJS/VueJS)</li><li>Mobile (Native App and Cross platform)</li><li>Microservice</li><li>Cloud computing</li></ul>"
+    "key_skills": "[\"ReactJS\",\"Ruby\",\"AWS\",\"React Native\", \".NET\"]'"
   },
   {
     "company_id": "367b208a-493f-4a10-9747-d487af4f0864",
-    "key_skills": "[\"C++\",\"JavaScript\",\"ReactJS\",\"NodeJS\",\"TypeScript\"]'",
-    "description": "<ul><li>Embedded Software for Automotive Applications</li><li>Enterprise Software development using Java &amp; .Net</li><li>SAP Consulting</li></ul>"
+    "key_skills": "[\"ReactJS\",\"Ruby\",\"AWS\",\"React Native\", \".NET\"]'"
   },
   {
     "company_id": "a24b1722-518c-40af-b9ac-478a5f79db48",
+    "key_skills": "[\"ReactJS\",\"Ruby\",\"AWS\",\"React Native\", \".NET\"]'"
+  },
+  {
+    "company_id": "512f71b7-b583-499a-aa5d-da43913e3101",
     "key_skills": "[\"C++\",\"JavaScript\",\"ReactJS\",\"NodeJS\",\"TypeScript\"]'",
     "description": "<ul><li>Python</li><li>Manual / Automation Test</li><li>Frontend (Angular/ReactJS/VueJS)</li><li>Mobile (Native App and Cross platform)</li><li>Microservice</li><li>Cloud computing</li></ul>"
+  },
+  {
+    "company_id": "c16edb6f-3cf1-4842-a4d7-3fae5319887c",
+    "key_skills": "[\"Java\",\"JavaScript\",\"ReactJS\",\"NodeJS\",\"DevOps\"]'",
+    "description": "<p><strong>Languages &amp; Frameworks</strong></p><p>JavaScript ES6, TypeScript, Node.js, React - Redux, Java, Spring Boot, Serverless, .NET</p><p><strong>Cloud Services - AWS, Azure</strong></p><p>Lambda, Postgres, S3, API Gateway, CLI, SNS/SQS, EC2, ECS, Cloud Watch, Splunk, SignalFX, AppDynamics</p><p><strong>DevOps</strong></p><p>Jenkins, Artifactory, SonarQube, GitHub, CloudFormation, Kubernetes, CHEF, Hashicorp Sentinel, Packer, Terraform, Harshicorp Vault, KONG gateway, Venafi</p><p><strong>Collaboration</strong></p><p>Microsoft Outlook, JIRA, Confluence, Microsoft Teams, ServiceNow, Rally</p>"
   }
 ]

@@ -150,3 +150,35 @@ export const GET_NAME_COMPANIES = gql`
     }
   }
 `;
+
+export const GET_COMPANY_BY_SLUG = gql`
+  query CompanyBySlug($slug: String!) {
+    companyBySlug(slug: $slug) {
+      company_name
+      id
+      brief_overview
+      company_type
+      company_website
+      country
+      slug
+      overview
+      ot_policy
+      company_size
+      company_location {
+        address
+      }
+      company_facebook
+      working_day
+      logo
+      company_benefit {
+        key_benefit
+        detail_description
+        company_images
+      }
+      company_key_skill {
+        description
+        key_skills
+      }
+    }
+  }
+`;

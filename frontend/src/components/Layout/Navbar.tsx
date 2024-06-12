@@ -80,7 +80,10 @@ const Header = () => {
                 </Link>
               </li>
               <li className='nav-item main-menu relative'>
-                <Link href='/companies' className='flex items-center px-2'>
+                <Link
+                  href='/companies/nab-innovation-centre-vietnam'
+                  className='flex items-center px-2'
+                >
                   Top Công ty IT
                   <IconChevronDown />
                 </Link>
